@@ -10,6 +10,6 @@ namespace ProblemSolver.Data
     {
         List<Tuple<TTransition, TState>> GetTransitions(TState state);
 
-        double GetHeuristicDistance(TState state,TState goal)
+        double GetHeuristicDistance(TState state, TState goal);
     }
 }

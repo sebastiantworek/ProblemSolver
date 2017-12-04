@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graphs\EdgeInfo.cs" />
     <Compile Include="Graphs\IGraph.cs" />
+    <Compile Include="Graphs\INeighboursGetter.cs" />
+    <Compile Include="Graphs\NodeInfo.cs" />
     <Compile Include="Graphs\VirtualGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataStructures.Graphs
 {
-    public interface IGraph<TNode,TEdgeTag>
+    public interface INeighboursGetter<TNode, TEdgeTag>
     {
-        void AddNode(TNode u);     
-
-        IEnumerable<(TEdgeTag edgeTag,TNode node)> GetNeighbours(TNode u);
+        IEnumerable<(TEdgeTag edgeTag, TNode node)> GetNeighbours(TNode node);
     }
 }

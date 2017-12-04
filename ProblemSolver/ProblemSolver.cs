@@ -21,29 +21,11 @@ namespace ProblemSolver
             InitialNode = initialNode;
             Goal = goal;
             Problem = problem;
-            //var graph = new DelegateImplicitGraph<TState,QuickGraph.TaggedEquatableEdge>()
-            //var graph = new QuickGraph.DelegateUndirectedGraph<TState, TaggedUndirectedEdge<TState, TTransition>>(new List<TState> { initialNode }, TryGetEdges, false);
-            //var graph = new BidirectionalGraph<TState, TaggedEdge<TState, TTransition>>();
-            var graph = new DelegateBidirectionalIncidenceGraph<TState, TaggedEquatableEdge<TState,TTransition>>(TryGetEdges, TryGetEdges);
-            var algorithm = new QuickGraph.Algorithms.ShortestPath.AStarShortestPathAlgorithm<TState, TaggedEquatableEdge<TState,TTransition>>(graph, GetCost, GetHeuristicCost);
         }
 
         #endregion
 
         #region
-
-        private bool TryGetEdges(TState state, out IEnumerable<TaggedEquatableEdge<TState, TTransition>> result)
-        {
-            throw new NotImplementedException();
-            result = null;
-
-            return true;
-        }
-
-        private double GetCost(TaggedEquatableEdge<TState,TTransition> edge)
-        {
-            throw new NotImplementedException();
-        }
 
         private double GetHeuristicCost(TState state) => Problem.GetHeuristicDistance(state, Goal);
 
