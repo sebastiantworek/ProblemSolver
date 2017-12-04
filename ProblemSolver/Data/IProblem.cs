@@ -8,5 +8,8 @@ namespace ProblemSolver.Data
 {
     public interface IProblem<TState,TTransition> where TTransition:ITransition
     {
+        List<Tuple<TTransition, TState>> GetTransitions(TState state);
+
+        double GetHeuristicDistance(TState state,TState goal)
     }
 }
