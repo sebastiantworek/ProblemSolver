@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProblemSolver;
 using System.Collections.Generic;
+using ProblemSolverTest.TestData;
 
 namespace ProblemSolverTest
 {
@@ -10,36 +11,7 @@ namespace ProblemSolverTest
     /// </summary>
     [TestClass]
     public class IntListProblemTest
-    {
-        class IntTransitionData : ProblemSolver.Data.ITransition
-        {
-            public IntTransitionData(double cost)
-            {
-                Cost = cost;
-            }
-
-            public double Cost { get; }
-        }
-
-        class IntListProblem : ProblemSolver.Data.IProblem<int, IntTransitionData>
-        {
-            public List<Tuple<IntTransitionData, int>> GetTransitions(int state)
-            {
-                var result = new List<Tuple<IntTransitionData, int>>();
-                if (state > 0)
-                    result.Add(new Tuple<IntTransitionData, int>(new IntTransitionData(1), state - 1));
-                if (state < 10)
-                    result.Add(new Tuple<IntTransitionData, int>(new IntTransitionData(1), state + 1));
-
-                return result;
-            }
-
-            public double GetHeuristicDistance(int state, int goal)
-            {
-                return Math.Abs(goal - state);
-            }
-        }
-                        
+    {                      
         [TestMethod]
         public void ConstructorTest()
         {

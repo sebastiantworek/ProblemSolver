@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructures.Graphs
 {
-    public interface INeighboursGetter<TNode, TEdgeTag>
+    public interface INodeLoader<TNode, TEdgeTag>
     {
         IEnumerable<(TEdgeTag edgeTag, TNode node)> GetNeighbours(TNode node);
     }
