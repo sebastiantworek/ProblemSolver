@@ -40,6 +40,8 @@ namespace Algorithms.Algorithms
                 _openNodes.Delete(minimalNodeHandle);
                 _closedNodes.Add(minimalNode);
             }
+
+            throw new NotImplementedException();
         }
 
         private IEnumerable<EdgeInfo<TNode, TEdgeTag>> ConstructPath()
