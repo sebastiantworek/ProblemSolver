@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProblemSolver", "ProblemSol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProblemSolverTest", "ProblemSolverTest\ProblemSolverTest.csproj", "{27A03E2D-EF3D-4926-AAC9-954D0112AE8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "DataStructures\Algorithms.csproj", "{7FB97E65-D2C8-4D6E-8704-8A1723BF9FDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Algorithms.csproj", "{7FB97E65-D2C8-4D6E-8704-8A1723BF9FDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
