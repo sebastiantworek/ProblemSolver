@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataStructures.Graphs
+namespace Algorithms.DataStructures.Graphs
 {
     /// <summary>
     /// This class respresents a graph which nodes will be lazy loaded. This allows to define also infinite graphs (but at the end only finit number of nodes will be loaded by certain algorithms).
@@ -49,7 +46,7 @@ namespace DataStructures.Graphs
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public IEnumerable<(TEdgeTag edgeTag, TNode node)> GetNeighbours(TNode node)
+        public IEnumerable<EdgeInfo<TNode,TEdgeTag>> GetNeighbours(TNode node)
         {
             if (!ContainsNode(node))
                 throw new ArgumentException("Graph does not contain given node");

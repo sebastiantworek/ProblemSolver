@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures.Graphs
+namespace Algorithms.DataStructures.Graphs
 {
     public interface IGraph<TNode,TEdgeTag>
     {
         void AddNode(TNode u);     
 
-        IEnumerable<(TEdgeTag edgeTag,TNode node)> GetNeighbours(TNode u);
+        IEnumerable<EdgeInfo<TNode,TEdgeTag>> GetNeighbours(TNode u);
     }
 }

@@ -1,4 +1,4 @@
-﻿using DataStructures.Graphs;
+﻿using Algorithms.DataStructures.Graphs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

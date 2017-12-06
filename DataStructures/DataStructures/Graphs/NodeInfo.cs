@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures.Graphs
+namespace Algorithms.DataStructures.Graphs
 {
     public class NodeInfo<TNode, TEdgeTag>
 {
@@ -15,7 +15,7 @@ namespace DataStructures.Graphs
 
         private readonly Dictionary<TNode, TEdgeTag> _neighbours = new Dictionary<TNode, TEdgeTag>();
 
-        public IEnumerable<(TEdgeTag edgeTag, TNode node)> Neighbours => _neighbours.Select(kvp => (edgeTag: kvp.Value, node: kvp.Key));
+        public IEnumerable<EdgeInfo<TNode,TEdgeTag>> Neighbours => _neighbours.Select(kvp => new EdgeInfo<TNode, TEdgeTag>() { EdgeTag = kvp.Value, Node = kvp.Key });
 
         private TNode Node { get; }
 

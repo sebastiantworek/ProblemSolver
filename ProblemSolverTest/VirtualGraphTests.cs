@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using DataStructures.Graphs;
+using Algorithms.DataStructures.Graphs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProblemSolverTest.TestData;
 
@@ -17,21 +17,21 @@ namespace ProblemSolverTest
             graph.AddNode(1);
             var result = graph.GetNeighbours(1).ToList();
             Assert.AreEqual(1, result.Count);
-            Assert.AreEqual(2, result[0].node);
-            Assert.AreEqual(1, result[0].edgeTag);
+            Assert.AreEqual(2, result[0].Node);
+            Assert.AreEqual(1, result[0].EdgeTag);
             
             graph.AddNode(10);
             result = graph.GetNeighbours(10).ToList();
             Assert.AreEqual(1, result.Count);
-            Assert.AreEqual(9, result[0].node);
-            Assert.AreEqual(1, result[0].edgeTag);
+            Assert.AreEqual(9, result[0].Node);
+            Assert.AreEqual(1, result[0].EdgeTag);
 
             graph.AddNode(5);
             result = graph.GetNeighbours(5).ToList();
             Assert.AreEqual(2, result.Count);
-            Assert.AreEqual(24, result[0].node*result[1].node); //4 and 6 expected
-            Assert.AreEqual(10, result[0].node + result[1].node);
-            Assert.AreEqual(1, result[0].edgeTag);
+            Assert.AreEqual(24, result[0].Node * result[1].Node); //4 and 6 expected
+            Assert.AreEqual(10, result[0].Node + result[1].Node);
+            Assert.AreEqual(1, result[0].EdgeTag);
         }
 
         [TestMethod]

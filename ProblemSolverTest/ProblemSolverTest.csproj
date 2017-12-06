@@ -59,9 +59,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataStructures\DataStructures.csproj">
+    <ProjectReference Include="..\DataStructures\Algorithms.csproj">
       <Project>{7fb97e65-d2c8-4d6e-8704-8a1723bf9fda}</Project>
-      <Name>DataStructures</Name>
+      <Name>Algorithms</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProblemSolver\ProblemSolver.csproj">
       <Project>{7c9c5f6c-210b-4352-b163-a75efc3bd850}</Project>
