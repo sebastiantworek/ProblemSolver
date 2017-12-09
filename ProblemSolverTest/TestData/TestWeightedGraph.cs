@@ -22,10 +22,10 @@ namespace ProblemSolverTest.TestData
         public IEnumerable<(SimpleWeightedEdge edgeTag, int node)> GetNeighbours(int node)
         {
             if (node > Min)
-                yield return (edgeTag: new SimpleWeightedEdge() { Cost = 1 }, node: node - 1);
+                yield return (edgeTag: new SimpleWeightedEdge(1), node: node - 1);
 
             if (node < Max)
-                yield return (edgeTag: new SimpleWeightedEdge() { Cost = 1 }, node: node + 1);
+                yield return (edgeTag: new SimpleWeightedEdge(1), node: node + 1);
         }
     }
 

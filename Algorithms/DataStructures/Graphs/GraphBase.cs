@@ -22,6 +22,12 @@ namespace Algorithms.DataStructures.Graphs
             _nodes[node] = (TNodeInfo)Activator.CreateInstance(typeof(TNodeInfo), new object[] { node });
         }
 
+        public void AddNodes(params TNode[] nodes)
+        {
+            foreach (var node in nodes)
+                AddNode(node);
+        }
+
         public bool ContainsNode(TNode node)
         {
             return _nodes.ContainsKey(node);
