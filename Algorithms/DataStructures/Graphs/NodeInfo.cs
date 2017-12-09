@@ -7,20 +7,18 @@ using System.Threading.Tasks;
 namespace Algorithms.DataStructures.Graphs
 {
     public class NodeInfo<TNode, TEdgeTag>
-{
+    {
         public NodeInfo(TNode node)
         {
             Node = node;
         }
 
-        private readonly Dictionary<TNode, TEdgeTag> _neighbours = new Dictionary<TNode, TEdgeTag>();
+        protected readonly Dictionary<TNode, TEdgeTag> _neighbours = new Dictionary<TNode, TEdgeTag>();
 
-        public IEnumerable<EdgeInfo<TNode,TEdgeTag>> Neighbours => _neighbours.Select(kvp => new EdgeInfo<TNode, TEdgeTag>() { EdgeTag = kvp.Value, Node = kvp.Key });
+        public IEnumerable<EdgeInfo<TNode, TEdgeTag>> Neighbours => _neighbours.Select(kvp => new EdgeInfo<TNode, TEdgeTag>() { EdgeTag = kvp.Value, Node = kvp.Key });
 
-        private TNode Node { get; }
-
-        public bool IsLoaded { get; set; } = false;
-
+        protected TNode Node { get; }
+        
         /// <summary>
         /// Method adds neigbour to the node. If the nodes are already neighbours then edgeTag will be override.
         /// </summary>
@@ -29,11 +27,6 @@ namespace Algorithms.DataStructures.Graphs
         public void AddNeigbour(TEdgeTag edgeTag, TNode node)
         {
             _neighbours[node] = edgeTag;
-        }
-
-        public void LoadNode(INodeLoader<TNode, TEdgeTag> nodeLoader)
-        {
-            
         }
     }
 }

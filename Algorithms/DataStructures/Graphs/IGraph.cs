@@ -10,6 +10,8 @@ namespace Algorithms.DataStructures.Graphs
     {
         void AddNode(TNode u);     
 
-        IEnumerable<EdgeInfo<TNode,TEdgeTag>> GetNeighbours(TNode u);
+        IEnumerable<EdgeInfo<TNode,TEdgeTag>> GetNeighbours(TNode node);
+
+        bool ContainsNode(TNode node);
     }
 }

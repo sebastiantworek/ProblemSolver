@@ -45,11 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\AStar.cs" />
+    <Compile Include="DataStructures\Graphs\BidirectionalGraph.cs" />
     <Compile Include="DataStructures\Graphs\EdgeInfo.cs" />
+    <Compile Include="DataStructures\Graphs\GraphBase.cs" />
     <Compile Include="DataStructures\Graphs\IGraph.cs" />
     <Compile Include="DataStructures\Graphs\INeighboursGetter.cs" />
+    <Compile Include="DataStructures\Graphs\LazyLoadedNodeInfo.cs" />
     <Compile Include="DataStructures\Graphs\NodeInfo.cs" />
-    <Compile Include="DataStructures\Graphs\VirtualGraph.cs" />
+    <Compile Include="DataStructures\Graphs\LazyLoadedGraph.cs" />
     <Compile Include="DataStructures\Graphs\WeightedEdge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

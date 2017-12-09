@@ -7,34 +7,34 @@ using System.Threading.Tasks;
 
 namespace ProblemSolverTest.TestData
 {
-    class IntNodeLoader : INodeLoader<int, int>
+    class WeightedNodeLoader : INodeLoader<int, SimpleWeightedEdge>
     {
         public int Min { get; private set; }
         public int Max { get; private set; }
 
-        public IntNodeLoader(int min, int max)
+        public WeightedNodeLoader(int min, int max)
         {
             Min = min;
             Max = max;
         }
-    
 
-        public IEnumerable<(int edgeTag, int node)> GetNeighbours(int node)
+
+        public IEnumerable<(SimpleWeightedEdge edgeTag, int node)> GetNeighbours(int node)
         {
             if (node > Min)
-                yield return (edgeTag: 1, node: node - 1);
+                yield return (edgeTag: new SimpleWeightedEdge() { Cost = 1 }, node: node - 1);
 
             if (node < Max)
-                yield return (edgeTag: 1, node: node  + 1);
+                yield return (edgeTag: new SimpleWeightedEdge() { Cost = 1 }, node: node + 1);
         }
     }
 
-    public class TestIntGraph : LazyLoadedGraph<int,int>
+    public class TestWeightedGraph : LazyLoadedGraph<int, SimpleWeightedEdge>
     {
         public int Min { get; private set; }
         public int Max { get; private set; }
 
-        public TestIntGraph(int min,int max) : base(new IntNodeLoader(min,max))
+        public TestWeightedGraph(int min, int max) : base(new WeightedNodeLoader(min, max))
         {
             Min = min;
             Max = max;

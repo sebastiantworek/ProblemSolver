@@ -4,4 +4,9 @@
     {
         double Cost { get; }
     }
+
+    public class SimpleWeightedEdge : IWeightedEdge
+    {
+        public double Cost { get; set; }
+    }
 }

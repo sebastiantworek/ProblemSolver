@@ -53,6 +53,9 @@
     <Compile Include="IntListProblemTest.cs" />
     <Compile Include="TestData\IntListProblem.cs" />
     <Compile Include="TestData\TestIntGraph.cs" />
+    <Compile Include="AStartTest.cs" />
+    <Compile Include="TestData\TestWeightedGraph.cs" />
+    <Compile Include="BidirectionalGraphTest.cs" />
     <Compile Include="VirtualGraphTests.cs" />
   </ItemGroup>
   <ItemGroup>
