@@ -56,6 +56,7 @@
     <Compile Include="AStartTest.cs" />
     <Compile Include="TestData\TestWeightedGraph.cs" />
     <Compile Include="BidirectionalGraphTest.cs" />
+    <Compile Include="Game15ProblemTest.cs" />
     <Compile Include="VirtualGraphTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +66,10 @@
     <ProjectReference Include="..\Algorithms\Algorithms.csproj">
       <Project>{7fb97e65-d2c8-4d6e-8704-8a1723bf9fda}</Project>
       <Name>Algorithms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Game15\Game15.csproj">
+      <Project>{3e03b803-a618-44d6-a751-2b07a4ad4dc1}</Project>
+      <Name>Game15</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProblemSolver\ProblemSolver.csproj">
       <Project>{7c9c5f6c-210b-4352-b163-a75efc3bd850}</Project>

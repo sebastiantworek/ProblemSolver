@@ -18,7 +18,7 @@ namespace ProblemSolverTest.TestData
 
     public class IntListProblem : ProblemSolver.Data.IProblem<int, IntTransitionData>
     {
-        public List<Tuple<IntTransitionData, int>> GetTransitions(int state)
+        public IEnumerable<Tuple<IntTransitionData, int>> GetTransitions(int state)
         {
             var result = new List<Tuple<IntTransitionData, int>>();
             if (state > 0)

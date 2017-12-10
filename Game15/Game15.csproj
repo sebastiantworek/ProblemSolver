@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7C9C5F6C-210B-4352-B163-A75EFC3BD850}</ProjectGuid>
+    <ProjectGuid>{3E03B803-A618-44D6-A751-2B07A4AD4DC1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProblemSolver</RootNamespace>
-    <AssemblyName>ProblemSolver</AssemblyName>
+    <RootNamespace>Game15</RootNamespace>
+    <AssemblyName>Game15</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -41,19 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ITransition.cs" />
-    <Compile Include="Data\IProblem.cs" />
-    <Compile Include="Data\SimpleTransition.cs" />
-    <Compile Include="ProblemSolver.cs" />
+    <Compile Include="Board.cs" />
+    <Compile Include="Move.cs" />
+    <Compile Include="Game15Problem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Algorithms\Algorithms.csproj">
-      <Project>{7FB97E65-D2C8-4D6E-8704-8A1723BF9FDA}</Project>
+      <Project>{7fb97e65-d2c8-4d6e-8704-8a1723bf9fda}</Project>
       <Name>Algorithms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProblemSolver\ProblemSolver.csproj">
+      <Project>{7c9c5f6c-210b-4352-b163-a75efc3bd850}</Project>
+      <Name>ProblemSolver</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

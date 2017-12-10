@@ -17,24 +17,29 @@ namespace ProblemSolverTest.TestData
             Min = min;
             Max = max;
         }
-    
 
-        public IEnumerable<(int edgeTag, int node)> GetNeighbours(int node)
+
+        public IEnumerable<EdgeInfo<int, int>> GetNeighbours(int node)
         {
             if (node > Min)
-                yield return (edgeTag: 1, node: node - 1);
+                yield return new EdgeInfo<int, int> { EdgeTag = 1, Node = node - 1 };
 
             if (node < Max)
-                yield return (edgeTag: 1, node: node  + 1);
+                yield return new EdgeInfo<int, int> { EdgeTag = 1, Node = node + 1 };
+        }
+
+        IEnumerable<EdgeInfo<int, int>> INodeLoader<int, int>.GetNeighbours(int node)
+        {
+            throw new NotImplementedException();
         }
     }
 
-    public class TestIntGraph : LazyLoadedGraph<int,int>
+    public class TestIntGraph : LazyLoadedGraph<int, int>
     {
         public int Min { get; private set; }
         public int Max { get; private set; }
 
-        public TestIntGraph(int min,int max) : base(new IntNodeLoader(min,max))
+        public TestIntGraph(int min, int max) : base(new IntNodeLoader(min, max))
         {
             Min = min;
             Max = max;

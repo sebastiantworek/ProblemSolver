@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Algorithms.DataStructures.Graphs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProblemSolver.Data
 {
-    public interface ITransition
+    public interface ITransition : IWeightedEdge
     {
-        double Cost { get; }
     }
 }

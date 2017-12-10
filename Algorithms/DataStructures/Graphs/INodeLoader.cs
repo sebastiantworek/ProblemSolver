@@ -8,6 +8,6 @@ namespace Algorithms.DataStructures.Graphs
 {
     public interface INodeLoader<TNode, TEdgeTag>
     {
-        IEnumerable<(TEdgeTag edgeTag, TNode node)> GetNeighbours(TNode node);
+        IEnumerable<EdgeInfo<TNode,TEdgeTag>> GetNeighbours(TNode node);
     }
 }

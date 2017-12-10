@@ -1,13 +1,17 @@
-﻿using ProblemSolver.Data;
+﻿using Algorithms.DataStructures.Graphs;
+using Algorithms.Algorithms;
+using ProblemSolver.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 
 namespace ProblemSolver
 {
-    public class ProblemSolver<TState, TTransition> where TTransition: ITransition
+    public class ProblemSolver<TState, TTransition> where TTransition : ITransition
     {
+        private readonly LazyLoadedGraph<TState, TTransition> _graph;
+
         #region Constructor
         /// <summary>
         /// 
@@ -21,13 +25,20 @@ namespace ProblemSolver
             InitialNode = initialNode;
             Goal = goal;
             Problem = problem;
+
+            _graph = new LazyLoadedGraph<TState, TTransition>(new ProblemNodeLoader(problem));
+            _graph.AddNode(initialNode);
         }
 
         #endregion
 
         #region
 
-        private double GetHeuristicCost(TState state) => Problem.GetHeuristicDistance(state, Goal);
+        public IEnumerable<TState> Solve()
+        {
+            var astar = new AStar<TState, TTransition>(_graph, Problem.GetHeuristicDistance);
+            return astar.Compute(InitialNode,Goal);
+        }
 
         #endregion
 
@@ -40,5 +51,19 @@ namespace ProblemSolver
         public IProblem<TState, TTransition> Problem { get; }
 
         #endregion
+
+        class ProblemNodeLoader : INodeLoader<TState, TTransition>
+        {
+            IProblem<TState, TTransition> _problem;
+
+            public ProblemNodeLoader(IProblem<TState, TTransition> problem)
+            {
+                _problem = problem;
+            }
+            public IEnumerable<EdgeInfo<TState, TTransition>> GetNeighbours(TState node)
+            {
+                return _problem.GetTransitions(node).Select(o => new EdgeInfo<TState, TTransition>() { Node = o.Item2, EdgeTag = o.Item1 });
+            }
+        }
     }
 }

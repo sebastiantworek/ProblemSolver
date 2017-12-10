@@ -33,10 +33,10 @@ namespace Algorithms.DataStructures.Graphs
             {
                 foreach (var kvp in _nodeLoader.GetNeighbours(node))
                 {
-                    if (!ContainsNode(kvp.node))
-                        AddNode(kvp.node);
+                    if (!ContainsNode(kvp.Node))
+                        AddNode(kvp.Node);
 
-                    nodeInfo.AddNeigbour(kvp.edgeTag, kvp.node);
+                    nodeInfo.AddNeigbour(kvp.EdgeTag, kvp.Node);
                 }
             }
 
