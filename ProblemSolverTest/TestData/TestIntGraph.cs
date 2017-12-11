@@ -27,11 +27,6 @@ namespace ProblemSolverTest.TestData
             if (node < Max)
                 yield return new EdgeInfo<int, int> { EdgeTag = 1, Node = node + 1 };
         }
-
-        IEnumerable<EdgeInfo<int, int>> INodeLoader<int, int>.GetNeighbours(int node)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public class TestIntGraph : LazyLoadedGraph<int, int>

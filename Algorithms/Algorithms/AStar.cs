@@ -85,6 +85,10 @@ namespace Algorithms.Algorithms
             result.Add(target);
 
             NodeTag nodeTag = LoadNodeTag(target);
+
+            if (nodeTag.Predecessor.Equals(target))
+                return result;
+
             while(nodeTag.Predecessor != null)
             {
                 result.Insert(0, nodeTag.Predecessor);

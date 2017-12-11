@@ -27,11 +27,6 @@ namespace ProblemSolverTest.TestData
             if (node < Max)
                 yield return new EdgeInfo<int, SimpleWeightedEdge> { EdgeTag = new SimpleWeightedEdge(1), Node = node + 1 };
         }
-
-        IEnumerable<EdgeInfo<int, SimpleWeightedEdge>> INodeLoader<int, SimpleWeightedEdge>.GetNeighbours(int node)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public class TestWeightedGraph : LazyLoadedGraph<int, SimpleWeightedEdge>

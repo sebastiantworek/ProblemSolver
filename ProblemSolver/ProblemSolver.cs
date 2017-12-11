@@ -38,7 +38,7 @@ namespace ProblemSolver
 
         #region
 
-        public IEnumerable<TState> Solve()
+        public List<TState> Solve()
         {
             var astar = new AStar<TState, TTransition>(_graph, Problem.GetHeuristicDistance);
 
