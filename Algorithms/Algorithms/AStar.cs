@@ -35,7 +35,7 @@ namespace Algorithms.Algorithms
         /// <param name="source"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public IEnumerable<TNode> Compute(TNode source, TNode target)
+        public List<TNode> Compute(TNode source, TNode target)
         {
             _targetNode = target;
 
@@ -79,7 +79,7 @@ namespace Algorithms.Algorithms
             return null;
         }
 
-        private IEnumerable<TNode> ConstructPath(TNode target)
+        private List<TNode> ConstructPath(TNode target)
         {
             var result = new List<TNode>();
             result.Add(target);
@@ -140,8 +140,11 @@ namespace Algorithms.Algorithms
             var nodeTag = LoadNodeTag(node);
             nodeTag.State = NodeTagState.Closed;
             _openNodes.Delete(nodeTag.Handle);
+
+            ENodeClosed?.Invoke(node);
         }
-            
+
+        public Action<TNode> ENodeClosed;
 
         #endregion
 

@@ -10,7 +10,11 @@ namespace ProblemSolver
 {
     public class ProblemSolver<TState, TTransition> where TTransition : ITransition
     {
+        #region Members
+
         private readonly LazyLoadedGraph<TState, TTransition> _graph;
+
+        #endregion
 
         #region Constructor
         /// <summary>
@@ -37,7 +41,26 @@ namespace ProblemSolver
         public IEnumerable<TState> Solve()
         {
             var astar = new AStar<TState, TTransition>(_graph, Problem.GetHeuristicDistance);
-            return astar.Compute(InitialNode,Goal);
+
+            ResetStatistics();
+
+            astar.ENodeClosed += OnNodeClosed;
+
+            var result = astar.Compute(InitialNode,Goal);
+
+            Statistics.SolutionSize = result.Count();
+
+            return result;
+        }
+
+        private void ResetStatistics()
+        {
+            Statistics = new Statistics();
+        }
+
+        private void OnNodeClosed(TState state)
+        {
+            Statistics.VisitedStatesCount++;
         }
 
         #endregion
@@ -49,6 +72,8 @@ namespace ProblemSolver
         public TState Goal { get; }
 
         public IProblem<TState, TTransition> Problem { get; }
+
+        public Statistics Statistics { get; private set; }
 
         #endregion
 
@@ -65,5 +90,12 @@ namespace ProblemSolver
                 return _problem.GetTransitions(node).Select(o => new EdgeInfo<TState, TTransition>() { Node = o.Item2, EdgeTag = o.Item1 });
             }
         }
+    }
+
+    public class Statistics
+    {
+        public int VisitedStatesCount { get; set; }
+
+        public int SolutionSize { get; set; }
     }
 }

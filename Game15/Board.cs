@@ -10,7 +10,7 @@ namespace Game15
     public class Board
     {
         public const int Width = 4;
-        public const int Heigh = 4;
+        public const int Heigh = 3;
         public const int Size = Width * Heigh;
         public const int Blank = 0;
 

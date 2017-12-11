@@ -13,16 +13,15 @@ namespace ProblemSolverTest
         public void IdentityTest()
         {
             var board = new Board();
-            board.Init();
+            board.InitRandom();
 
-            var goal = board.Clone();
-
-            Assert.IsTrue(board.Move(Direction.Right));
-            Assert.IsTrue(board.Move(Direction.Right));
+            var goal = new Board();
+            goal.Init();
 
             Game15Problem problem = new Game15Problem();
             ProblemSolver<Board, SimpleTransition> problemSolver = new ProblemSolver<Board, SimpleTransition>(board, goal, problem);
-            var xx = problemSolver.Solve();
+            var solution = problemSolver.Solve();
+            var statistics = problemSolver.Statistics;
         }
     }
 }
