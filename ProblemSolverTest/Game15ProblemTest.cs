@@ -10,7 +10,7 @@ namespace ProblemSolverTest
     public class Game15ProblemTest
     {
         [TestMethod]
-        public void IdentityTest()
+        public void RandomTest()
         {
             var board = new Board();
             board.InitRandom();
