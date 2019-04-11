@@ -54,11 +54,14 @@
     <Compile Include="DataStructures\Graphs\NodeInfo.cs" />
     <Compile Include="DataStructures\Graphs\LazyLoadedGraph.cs" />
     <Compile Include="DataStructures\Graphs\WeightedEdge.cs" />
+    <Compile Include="DataStructures\Heaps\C5HeapWrapper.cs" />
+    <Compile Include="DataStructures\Heaps\IHeap.cs" />
     <Compile Include="DataStructures\Permutations\PermutationsUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
