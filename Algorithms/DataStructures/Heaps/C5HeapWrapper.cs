@@ -7,42 +7,76 @@ using C5;
 
 namespace Algorithms.DataStructures.Heaps
 {
-    public class C5HeapWrapper<TItem> : IHeap<TItem, C5.IPriorityQueueHandle<TItem>>
+    public class C5HeapWrapper<TItem> : IHeap<TItem>
     {
         protected readonly C5.IntervalHeap<TItem> _intervalHeap;
-        public C5HeapWrapper(IComparer<TItem> comparer)
+        public C5HeapWrapper(C5.IntervalHeap<TItem> intervalHeap)
         {
-            _intervalHeap = new IntervalHeap<TItem>(comparer);
+            _intervalHeap = intervalHeap;
         }
 
-        public IPriorityQueueHandle<TItem> Add(TItem element)
+        public bool IsEmpty => _intervalHeap.IsEmpty;
+
+        public object Add(TItem element)
         {
             IPriorityQueueHandle<TItem> handle = null;
             _intervalHeap.Add(ref handle, element);
             return handle;
         }
 
-        public void Delete(IPriorityQueueHandle<TItem> handle)
+        public object Add(ref object handle, TItem element)
         {
-            _intervalHeap.Delete(handle);
+            var typedHandle = handle as IPriorityQueueHandle<TItem>;
+
+            if (handle != null && typedHandle == null)
+                throw new InvalidPriorityQueueHandleException();
+
+            _intervalHeap.Add(ref typedHandle, element);
+
+            handle = typedHandle;
+
+            return typedHandle;
         }
 
-        public TItem FindMin(out IPriorityQueueHandle<TItem> handle)
+        public void Delete(object handle)
         {
-            return _intervalHeap.FindMin(out handle);
+            var typedHandle = handle as IPriorityQueueHandle<TItem>;
+
+            if (typedHandle == null)
+                throw new InvalidPriorityQueueHandleException();
+
+            _intervalHeap.Delete(typedHandle);
         }
 
-        public TItem Get(IPriorityQueueHandle<TItem> handle)
+        public TItem FindMin(out object handle)
         {
+            TItem item = _intervalHeap.FindMin(out IPriorityQueueHandle<TItem> typedHandle);
+            handle = typedHandle;
+            return item;
+        }
+
+        public TItem Get(object handle)
+        {
+            var typedHandle = handle as IPriorityQueueHandle<TItem>;
+
+            if (typedHandle == null)
+                throw new InvalidPriorityQueueHandleException();
+
             TItem element;
-            if (!_intervalHeap.Find(handle, out element))
+            if (!_intervalHeap.Find(typedHandle, out element))
                 throw new IndexOutOfRangeException();
+
             return element;
         }
 
-        public void Replace(IPriorityQueueHandle<TItem> handle, TItem item)
+        public void Replace(object handle, TItem item)
         {
-            _intervalHeap.Replace(handle, item);
+            var typedHandle = handle as IPriorityQueueHandle<TItem>;
+
+            if (typedHandle == null)
+                throw new InvalidPriorityQueueHandleException();
+
+            _intervalHeap.Replace(typedHandle, item);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Algorithms.DataStructures.Graphs;
+using Algorithms.DataStructures.Heaps;
 using System;
 using System.Collections.Generic;
 
@@ -13,7 +14,7 @@ namespace Algorithms.Algorithms
         private TNode _targetNode;
 
         private Dictionary<TNode, NodeTag> _nodeTags;
-        private C5.IntervalHeap<TNode> _openNodes;
+        private IHeap<TNode> _openNodes;
 
         #endregion
 
@@ -106,7 +107,7 @@ namespace Algorithms.Algorithms
         private void ResetBuffers()
         {
             _nodeTags = new Dictionary<TNode, NodeTag>();
-            _openNodes = new C5.IntervalHeap<TNode>(new DistanceComparer(_nodeTags));
+            _openNodes = new C5HeapWrapper<TNode>(new C5.IntervalHeap<TNode>(new DistanceComparer(_nodeTags)));
         }
         
         private NodeTag LoadNodeTag(TNode node)
@@ -130,7 +131,7 @@ namespace Algorithms.Algorithms
             nodeTag.State = NodeTagState.Open;
             nodeTag.ActualDistance = acutalDistance;
             nodeTag.Predecessor = predecessor;
-            C5.IPriorityQueueHandle<TNode> handle = nodeTag.Handle;
+            object handle = nodeTag.Handle;
             if (handle == null)
                 _openNodes.Add(ref handle, node);
             else
@@ -165,7 +166,7 @@ namespace Algorithms.Algorithms
             public double HeuristicDistance { get; }
             public TNode Predecessor { get; set; }
             public NodeTagState State { get; set; } = NodeTagState.New;
-            public C5.IPriorityQueueHandle<TNode> Handle { get;set;}
+            public object Handle { get;set;}
         }
 
         enum NodeTagState { New, Open, Closed }
